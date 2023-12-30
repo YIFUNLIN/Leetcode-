@@ -76,7 +76,9 @@ class Solution:
 
 > Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.
 
-![S__3342414](https://hackmd.io/_uploads/HJmEXzTwa.jpg)
+
+![S__3342414](https://hackmd.io/_uploads/rJO_kLaD6.jpg)
+
 
 
 ```
