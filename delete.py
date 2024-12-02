@@ -1,4 +1,4 @@
-# 允許刪除 串列首、中或最後的 Node
+# 允許刪除 串列首、 中或最後的 Node
 class employee:
     def __init__(self):
         self.num = 0
