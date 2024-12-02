@@ -52,53 +52,54 @@ namedata=['Allen','Scott','Marry','John','Mark','Ricky', \
 print('員工編號 薪水 員工編號 薪水 員工編號 薪水 員工編號 薪水')
 print('-------------------------------------------------------')
 
-# 顯示員工資訊表
-for i in range(3): # 輸出三行
-    for j in range(4): # 每行四個員工資訊
-        print('[%4d] $%5d ' %(data[j*3+i][0],data[j*3+i][1]),end='')
+for i in range(3):
+    for j in range(4):
+        print('[%4d] $%5d '%(data[j * 3 + i][0],data[j * 3 + i][1]),end='')
     print()
 print('------------------------------------------------------\n')
 
-# 建立初始鏈結串列
-head=employee() # 使用 employee 類別創建第一個節點，作為Link list 的起點
-head.next=None  # 賦予第一個Node資料
+# 將資料寫入 Link List
+head = employee() # 建立第一個空 Node
+head.next = None
+# 將資料寫入第一個Node
+head.num = data[0][0]  # 存第一筆資料的員工編號
+head.salary = data[0][1]  # 存第一筆薪水
+head.name = namedata[0]   # 第一筆資料的員工姓名
+head.next = None          # 第一個node 的下一個指標設為空
+ptr = head                # 用ptr 指向他
 
-# 將第一筆資料存入 head 節點
-head.num=data[0][0]
-head.name=namedata[0]
-head.salary=data[0][1]
-head.next=None
-ptr=head
+# 將資料寫入剩餘的Link list中: 從第二筆資料開始，依次建立新節點
+for i in range(1,12):       # 先建立11個Node
+    newnode = employee()    # 初始化
+    newnode.next = None     # 初始化新節點的指標
+    # 開始寫入資料
+    newnode.num = data[i][0]  # 儲存員工編號
+    newnode.salary = data[i][1] # 儲存薪水
+    newnode.name = namedata[i] # 儲存員工姓名
+    newnode.next = None    # 新節點的指標初始為空
 
-# 將剩餘資料插入Link list
-for i in range(1,12): #建立串列
-    newnode=employee()
-    newnode.next=None
-    newnode.num=data[i][0]
-    newnode.name=namedata[i]
-    newnode.salary=data[i][1]
-    newnode.next=None
-    ptr.next=newnode
-    ptr=ptr.next
+    ptr.next = newnode  # 將目前節點的 next 指向新節點
+    ptr = ptr.next   # 移動 ptr 指標到新節點上
 
-# 插入節點
-while(True):
-    print('請輸入要插入其後的員工編號,如輸入的編號不在此串列中,') 
-    position=int(input('新輸入的員工節點將視為此串列的串列首,要結束插入過程,請輸入-1：'))
-    if position ==-1:
+
+while True:
+    print('請輸入要插入其後的員工編號:')
+    position = int(input('新輸入的員工節點，將視為此串列的串列首，要結束請輸入-1:'))
+    if position == -1:
         break
     else:
-        ptr=Find(head,position)  # 根據一開始輸入的node，去找到他的位置
-        new_num=int(input('請輸入新插入的員工編號：'))
-        new_salary=int(input('請輸入新插入的員工薪水：'))
-        new_name=input('請輸入新插入的員工姓名: ')
-        head=Insertnode(head,ptr,new_num,new_salary,new_name)
+        ptr = Find(head, position)
+        new_num = int(input("請輸入新插入的員工編號:"))
+        new_salary = int(input("請輸入新插入的員工薪水:"))
+        new_name = input("請輸入新插入的員工姓名:")
+        head = Insertnode(head,ptr,new_num,new_salary,new_name)
     print()
-  			
-ptr=head
-print('\t員工編號    姓名\t薪水')         
-print('\t==============================')
+
+ptr = head
+print('\t員工編號   姓名\t薪水')
+print('\t========================')
 while ptr!=None:
     print('\t[%2d]\t[ %-7s]\t[%3d]' %(ptr.num,ptr.name,ptr.salary))
-    ptr=ptr.next
+    ptr = ptr.next
+
 
