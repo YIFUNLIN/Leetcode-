@@ -1,3 +1,4 @@
+# 法一
 import random
 
 # 初始化陣列
