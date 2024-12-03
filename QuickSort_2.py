@@ -4,9 +4,9 @@ def partition(arr, low, high):
     right = high
 
     while True:
-        while left <= right and arr[left] < pivot:  # 找到大於等於 pivot 的左側值
+        while left <= right and arr[left] <= pivot:  # 找到大於等於 pivot 的左側值
             left += 1
-        while left <= right and arr[right] > pivot:  # 找到小於等於 pivot 的右側值
+        while left <= right and arr[right] >= pivot:  # 找到小於等於 pivot 的右側值
             right -= 1
 
         if left > right:  # 當左右指標交錯時
