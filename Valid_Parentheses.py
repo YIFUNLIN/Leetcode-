@@ -7,7 +7,9 @@ class Solution:
                 stack.append(c)
             else:                  # 如果堆疊為空或找不到對應的括號，直接返回 False
                 if not stack or \
-                    (c == ")" and stack[-1] != '(') or \
+                    # 利用stack[-1]檢查stack 最頂端的元素是否匹配
+                    
+                    (c == ")" and stack[-1] != '(') or \ 
                     (c == "]" and stack[-1] != "[") or \
                     (c == "}" and stack[-1] != "{"):
                     return False
