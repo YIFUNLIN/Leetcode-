@@ -1,5 +1,23 @@
 # Leetcode: 328. Odd Even Linked List 
+# 法一. (個人覺得比較好記)
+class Solution:
+    def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if head == None or head.next == None:  # 若串列為空，或只有一個節點就直接回傳
+            return head
+        odd = head   # 作為後續在link list 上找出奇數的node
+        even = odd.next
+        even_head = even
 
+        while even != None and even.next != None: # 確認偶數串列和偶數節點的下一個都有值才做
+            odd.next = even.next
+            odd = odd.next
+            even.next = odd.next
+            even = even.next
+
+        odd.next = even_head  # 要將odd的尾端去跟even的頭連接
+        return head
+
+# 法二.
 class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if head != None:
