@@ -21,7 +21,7 @@ def push(value):
 def pop():
     global stack
     global top
-    if top == -1:
+    if isEmpty():
         print('stack is empty')
     else:
         print('pop value: %d'%stack[top])
