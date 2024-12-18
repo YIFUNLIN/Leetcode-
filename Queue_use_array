@@ -1,0 +1,37 @@
+# 使用Array去實作Queue
+max = 10
+queue = [None] * max
+front = rear = -1
+choice = ''
+
+while rear < max -1 and choice != 'exit':
+    choice = input("[a]表示存入一個數值，[d]表示取出一個，[e]表示結束程式：")
+    if choice == 'a':
+        value = int(input("請輸入一個數值："))
+        rear += 1
+        queue[rear] = value
+    elif choice == 'd':
+        if front < rear:
+            front += 1
+            print('取出數值 %d'%queue[front])
+            queue[front] = None
+        else:
+            print('Queue is empty')
+            break
+    elif choice == 'e':
+        break
+    else:
+        print('Invalid input')
+
+print('輸出array中的所有數值: ')
+
+if rear == max - 1:
+    print('Queue is full')
+elif front >= rear:
+    print('Queue is empty')
+else:
+    while front < rear:
+        front += 1
+        print('[%d] '%queue[front],end='')
+    print()
+    print('-------------------------------')
